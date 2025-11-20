@@ -163,6 +163,104 @@
   height: 18px;
 }
 
+/* Contact form styles (professional, matches project variables) */
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+  width: 100%;
+}
+
+.contact-intro p {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text-black);
+  opacity: 0.9;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 640px;
+  margin-top: 6px;
+}
+
+.contact-input,
+.contact-textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  color: var(--text-black);
+  font-size: 0.98rem;
+  box-shadow: 0 6px 18px rgba(16,24,40,0.04);
+  transition: box-shadow 0.15s ease, border-color 0.15s ease, transform 0.12s ease;
+}
+
+.contact-input::placeholder,
+.contact-textarea::placeholder {
+  color: var(--text-black);
+  opacity: 0.5;
+}
+
+.contact-input:focus,
+.contact-textarea:focus {
+  outline: none;
+  border-color: #5ce1e6;
+  box-shadow: 0 8px 30px rgba(92,225,230,0.08);
+  transform: translateY(-1px);
+}
+
+.contact-textarea { resize: vertical; min-height: 72px; }
+
+.contact-button {
+  align-self: flex-start;
+  padding: 0.75rem 1.1rem;
+  border-radius: 10px;
+  background: linear-gradient(90deg,#5ce1e6,#3bbfdc);
+  color: #07212a;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(14,77,86,0.08);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+}
+
+.contact-button:hover { transform: translateY(-3px); opacity: 0.98; }
+
+.contact-button:active { transform: translateY(-1px); }
+
+/* Collapsible wrapper transition */
+.contact-form-wrapper {
+  width: 100%;
+  max-width: 640px;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: max-height 280ms ease, opacity 220ms ease, transform 220ms ease;
+  margin-top: 6px;
+}
+
+.contact-form-wrapper.open {
+  max-height: 800px; /* large enough to fit form */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-cta { margin-top: 6px; }
+
+@media (min-width: 768px) {
+  .contact-form { flex-direction: row; flex-wrap: wrap; align-items: center; }
+  .contact-input { width: calc(50% - 0.5rem); }
+  .contact-textarea { width: 100%; }
+  .contact-form > div { margin-top: 0.25rem; }
+}
+
 @media (min-width: 768px) {
   .hero-container h1 {
     font-size: 64px;

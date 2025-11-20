@@ -10,7 +10,7 @@ export const DesktopHeader = () => {
         <div className="header-left">
           {/* show icon-only logo */}
           <img src="logo neurai.svg" alt="NeurAI" className="logo" />
-          <div className="header-text" >NeurAI</div>  
+          <div className="header-text" ></div>  
                   <nav className="nav-links">
             <a href="#">Solutions</a>
             <a href="#">Roles</a>

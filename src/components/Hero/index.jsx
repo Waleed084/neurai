@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useTheme } from '../../context/ThemeContext';
 import './Hero.css';
 
@@ -118,41 +118,70 @@ export const Hero = () => {
     };
   }, []);
 
+  const handleContactSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name?.value || '';
+    const email = form.email?.value || '';
+    const company = form.company?.value || '';
+    const message = form.message?.value || '';
+
+    // Fallback behavior: open the user's mail client with a prefilled message
+    const subject = `Website contact request from ${name || email}`;
+    const body = `Name: ${name}\nEmail: ${email}\nCompany: ${company}\n\nMessage:\n${message}`;
+    window.location.href = `mailto:hello@apollo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const nameInputRef = useRef(null);
+
+  const openContactForm = () => {
+    setIsFormOpen(true);
+    // autofocus after opening (allow CSS transition to start)
+    setTimeout(() => nameInputRef.current?.focus(), 180);
+  };
+
   return (
     <div className="hero-wrapper">
       <div className="hero-container">
         <div id="hero-particles" className="hero-particles-layer" aria-hidden="true"></div>
         <div className="hero-content">
-          <h1>The AI sales platform for smarter, faster revenue growth</h1>
+          <h1>Dynamic Workflow. Hyper Growth</h1>
           <p className="subtitle">
             Build pipeline smarter, close deals faster, and simplify your tech stack with a unified platform built for modern sales and marketing teams.
           </p>
           
-          <div className="signup-section">
-            <div className="signup-form">
-              <input 
-                type="email" 
-                placeholder="Enter email" 
-                className="email-input" 
-              />
-              <button className="signup-button">Sign up for free</button>
+          <div className="contact-section">
+            <div className="contact-intro">
+              <p>Have questions or want to see a demo? Our team is ready to help you scale.</p>
             </div>
 
-            <div className="alternative-signup">
-              <div className="or-line"><span>or</span></div>
-              <div className="social-buttons">
-                <button className="social-button google-signup">
-                  <img src="/google.svg" alt="Google" />
-                  <span>Sign up with Google</span>
-                </button>
-                <button className="social-button microsoft-signup">
-                  <img src="/microsoft-svgrepo-com.svg" alt="Microsoft" />
-                  <span>Sign up with Microsoft</span>
+            {/* CTA button shown when form is closed */}
+            {!isFormOpen && (
+              <div className="contact-cta">
+                <button type="button" className="contact-button" onClick={openContactForm} aria-expanded="false">
+                  Contact Sales
                 </button>
               </div>
+            )}
+
+            {/* Collapsible form wrapper with transition */}
+            <div className={`contact-form-wrapper ${isFormOpen ? 'open' : ''}`} aria-hidden={!isFormOpen}>
+              <form className="contact-form" onSubmit={handleContactSubmit}>
+                <input ref={nameInputRef} name="name" type="text" placeholder="Full name" className="contact-input" />
+                <input name="email" type="email" placeholder="Work email" className="contact-input" />
+                <input name="company" type="text" placeholder="Company" className="contact-input" />
+                <textarea name="message" placeholder="How can we help?" className="contact-textarea" rows="3" />
+                <div style={{ display: 'flex', gap: '0.5rem' }}>
+                  <button type="submit" className="contact-button">Send to Sales</button>
+                  <button type="button" className="contact-button" onClick={() => setIsFormOpen(false)} style={{ background: 'transparent', border: '1px solid var(--border-color)', color: 'var(--text-black)', boxShadow: 'none' }}>
+                    Cancel
+                  </button>
+                </div>
+              </form>
             </div>
 
-            <p className="hero-terms">By signing up, I agree to Apollo's <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+            <p className="hero-terms">Prefer email? Reach us at <a href="mailto:hello@apollo.com">hello@apollo.com</a>.</p>
           </div>
         </div>
       </div>
