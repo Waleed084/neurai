@@ -173,6 +173,9 @@
   align-items: center;
   width: 100%;
 }
+/* ensure anchor scrolls below fixed header */
+#contact { scroll-margin-top: calc(var(--header-height) + 20px); }
+@media (max-width: 640px) { #contact { scroll-margin-top: calc(var(--mobile-header-height) + 12px); } }
 
 .contact-intro p {
   margin: 0;
@@ -255,6 +258,24 @@
 }
 
 .contact-cta { margin-top: 6px; }
+
+/* Contact toggle icon (three stacked lines -> X) */
+.contact-button.toggle { display: inline-flex; align-items: center; gap: 0.6rem; }
+.contact-button .contact-label { display: inline-block; vertical-align: middle; }
+.contact-icon { width: 20px; height: 2px; background: currentColor; position: relative; display: inline-block; }
+.contact-icon::before,
+.contact-icon::after { content: ''; position: absolute; left: 0; width: 20px; height: 2px; background: currentColor; transition: transform 200ms ease, top 200ms ease, opacity 180ms ease; }
+.contact-icon::before { top: -6px; }
+.contact-icon::after { top: 6px; }
+
+/* closed state: three stacked lines */
+.contact-button.toggle .contact-icon { background: currentColor; }
+
+/* open state: hide middle bar and rotate before/after into an X */
+.contact-button.toggle.open .contact-icon { background: transparent; }
+.contact-button.toggle.open .contact-icon::before { top: 0; transform: rotate(45deg); }
+.contact-button.toggle.open .contact-icon::after { top: 0; transform: rotate(-45deg); }
+
 
 @media (min-width: 768px) {
   .contact-form { flex-direction: row; flex-wrap: wrap; align-items: center; }
@@ -353,4 +374,9 @@
 @media (max-width: 640px) {
   .founder-quote { font-size: 0.8rem; font-weight: 400; font-style: italic; }
   .founder-note { padding: 0.9rem; }
+}
+
+/* Hide founder note on small screens to reduce visual clutter */
+@media (max-width: 640px) {
+  .founder-note { display: none !important; }
 }

@@ -19,27 +19,29 @@ export const DesktopHeader = () => {
                   </nav>
         </div>
         <div className="header-right">
-          {/* <a href="#" className="login-link">Log in</a> */}
-          {/* <button className="demo-button">Get a demo</button> */}
-          <button className="signup-button">Get a Demo</button>
+          <a href="#contact" className="demo-button">Contact Sales</a>
         </div>
       </div>
     </header>
   );
 };
 
-export const MobileHeader = ({ onToggleDrawer }) => {
+export const MobileHeader = ({ onToggleDrawer, isDrawerOpen }) => {
   const { isDark, toggleTheme } = useTheme();
 
   return (
     <header className="header mobile-header">
       <div className="header-content">
-        <img src="logo neurai.svg" alt="NeurAI" className="logo" />
-        <img src="NEUR AI BLACK FONT WITHOUT ICON.png" alt="NeurAI" className="logotext" />
-        <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+        <div className="mobile-left" aria-hidden />
+
+        <div className="mobile-center">
+          <img src="logo neurai.svg" alt="NeurAI" className="logo" />
+        </div>
+
+        <div className="mobile-right">
           {/* theme toggle removed — dark mode enforced */}
-          <button className="menu-button" onClick={onToggleDrawer}>
-            <span className="menu-icon"></span>
+          <button className={`menu-button ${isDrawerOpen ? 'open' : ''}`} onClick={onToggleDrawer} aria-expanded={isDrawerOpen} aria-label={isDrawerOpen ? 'Close menu' : 'Open menu'}>
+            <span className="menu-icon" aria-hidden></span>
           </button>
         </div>
       </div>
@@ -48,11 +50,11 @@ export const MobileHeader = ({ onToggleDrawer }) => {
 };
 
 // Convenience wrapper used by App.jsx — renders both desktop and mobile headers.
-export const Header = ({ onToggleDrawer }) => {
+export const Header = ({ onToggleDrawer, isDrawerOpen }) => {
   return (
     <>
       <DesktopHeader />
-      <MobileHeader onToggleDrawer={onToggleDrawer} />
+      <MobileHeader onToggleDrawer={onToggleDrawer} isDrawerOpen={isDrawerOpen} />
     </>
   );
 };

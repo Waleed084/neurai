@@ -64,7 +64,7 @@ function App() {
 
   return (
     <div className="app-container">
-        <Header onToggleDrawer={toggleDrawer} />
+        <Header onToggleDrawer={toggleDrawer} isDrawerOpen={isDrawerOpen} />
       <Drawer isOpen={isDrawerOpen} onClose={toggleDrawer} />
       
       <main className="main-content">

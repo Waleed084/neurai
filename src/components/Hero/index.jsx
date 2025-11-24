@@ -141,6 +141,23 @@ export const Hero = () => {
     setTimeout(() => nameInputRef.current?.focus(), 180);
   };
 
+  // Open the contact form automatically when navigating to #contact
+  useEffect(() => {
+    const openIfHash = () => {
+      try {
+        if (window.location.hash === '#contact') {
+          openContactForm();
+        }
+      } catch (err) {
+        // ignore
+      }
+    };
+
+    openIfHash();
+    window.addEventListener('hashchange', openIfHash);
+    return () => window.removeEventListener('hashchange', openIfHash);
+  }, []);
+
   return (
     <div className="hero-wrapper">
       <div className="hero-container">
@@ -160,19 +177,24 @@ export const Hero = () => {
             <cite className="founder-attrib">— Neurai Founders</cite>
           </div>
           
-          <div className="contact-section">
+          <div id="contact" className="contact-section">
             <div className="contact-intro">
               <p>Have questions or want to see a demo? Our team is ready to help you scale.</p>
             </div>
 
-            {/* CTA button shown when form is closed */}
-            {!isFormOpen && (
-              <div className="contact-cta">
-                <button type="button" className="contact-button" onClick={openContactForm} aria-expanded="false">
-                  Contact Sales
-                </button>
-              </div>
-            )}
+            {/* CTA toggle always visible — icon animates between stacks and cross */}
+            <div className="contact-cta">
+              <button
+                type="button"
+                className={`contact-button toggle ${isFormOpen ? 'open' : ''}`}
+                onClick={() => setIsFormOpen((s) => !s)}
+                aria-expanded={isFormOpen}
+                aria-controls="contact"
+              >
+                <span className="contact-icon" aria-hidden></span>
+                <span className="contact-label">Contact Sales</span>
+              </button>
+            </div>
 
             {/* Collapsible form wrapper with transition */}
             <div className={`contact-form-wrapper ${isFormOpen ? 'open' : ''}`} aria-hidden={!isFormOpen}>

@@ -228,6 +228,24 @@ html { scroll-behavior: smooth; }
   position: relative;
 }
 
+/* Menu -> Close animation */
+.menu-button.open .menu-icon { background: transparent; }
+.menu-button.open .menu-icon::before,
+.menu-button.open .menu-icon::after { top: 0; transform: rotate(45deg); width: 24px; }
+.menu-button.open .menu-icon::after { transform: rotate(-45deg); }
+.menu-icon::before,
+.menu-icon::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background: var(--text-black);
+  left: 0;
+  transition: transform 200ms ease, top 200ms ease, opacity 180ms ease;
+}
+.menu-icon::before { top: -6px; }
+.menu-icon::after { bottom: -6px; }
+
 .menu-icon::before,
 .menu-icon::after {
   content: '';
@@ -329,23 +347,22 @@ html { scroll-behavior: smooth; }
 .demo-button {
   padding: 6px 16px;
   font-size: 14px;
-  font-weight: 500;
-  color: var(--text-black);
-  background: transparent;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
+  font-weight: 600;
+  color: #07212a;
+  background: var(--secandary-blue);
+  border: 1px solid var(--secandary-blue);
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.18s ease;
+  box-shadow: 0 8px 24px rgba(14,77,86,0.08);
   position: relative;
   overflow: hidden;
 }
 
 .demo-button:hover {
   transform: translateY(-2px);
-  border-color: var(--secandary-blue);
-  color: var(--secandary-blue);
-  box-shadow: 0 8px 24px rgba(92, 225, 230, 0.15);
+  filter: brightness(0.98);
+  box-shadow: 0 12px 36px rgba(14,77,86,0.12);
 }
 
 .signup-button {
@@ -945,7 +962,7 @@ html { scroll-behavior: smooth; }
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 16px;
+    padding: 0 12px;
   }
 
   .main-content {
@@ -984,6 +1001,27 @@ html { scroll-behavior: smooth; }
     width: 100%;
   }
 }
+
+/* Mobile header: center icon logo with left spacer and right actions */
+.mobile-header .mobile-left,
+.mobile-header .mobile-right {
+  width: 44px; /* reserve space for symmetry */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-header .mobile-center {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-header .logotext { display: none; }
+
+/* Make sure logo doesn't display text-sized image on mobile */
+.mobile-header .logo { height: 28px; }
 
 @media (max-width: 480px) {
   .hero-container h1 {

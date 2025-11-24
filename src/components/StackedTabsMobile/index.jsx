@@ -7,52 +7,52 @@ import img2 from '../../assets/stackedtabs/image (2).webp';
 import img3 from '../../assets/stackedtabs/image (3).webp';
 
 const tabs = [
-  { id: "outbound", label: "OUTBOUND" },
-  { id: "inbound", label: "INBOUND" },
-  { id: "enrichment", label: "DATA ENRICHMENT" },
-  { id: "deals", label: "DEAL EXECUTION" },
+  { id: 'workflow', label: 'WORKFLOW AUTOMATION' },
+  { id: 'ai-suggestions', label: 'AI SUGGESTIONS' },
+  { id: 'orchestration', label: 'TASK ORCHESTRATION' },
+  { id: 'dashboards', label: 'SMART DASHBOARDS' },
 ]
 
 const content = [
   {
-    id: "outbound",
-    title: "Turn hours of prospecting into minutes",
+    id: 'workflow',
+    title: 'Automate repetitive operations end-to-end',
     bullets: [
-      "AI-powered multichannel campaigns in one click",
-      "Built-in email deliverability guardrails",
-      "Prioritized task lists to maximize selling",
-      "Workflow automations to identify and scale what works",
-    ]
+      'Auto-execute daily, weekly, and event-based workflows',
+      'Connect apps like Slack, Notion, Airtable, Sheets, CRMs',
+      'Visual workflow builder with conditional logic',
+      'Zero manual steps for recurring tasks',
+    ],
   },
   {
-    id: "inbound",
-    title: "Qualify and act on inbound leads in seconds",
+    id: 'ai-suggestions',
+    title: 'AI finds bottlenecks before you do',
     bullets: [
-      "Anonymous visitor identification",
-      "Real-time form enrichment",
-      "Instant routing with built-in scheduler",
-      "Automated nurture & follow-up sequences",
-    ]
+      'Automated workflow suggestions based on usage patterns',
+      'Detects repetitive tasks across your organization',
+      'Recommends new automations instantly',
+      'One-click apply for suggested improvements',
+    ],
   },
   {
-    id: "enrichment",
-    title: "Fuel smarter selling with always-fresh data",
+    id: 'orchestration',
+    title: 'Centralize how work flows across your company',
     bullets: [
-      "210M+ contacts and 30M+ companies",
-      "Verified emails & phone numbers",
-      "Better targeting and personalization",
-      "Clean data across your CRM",
-    ]
+      'Assign, track, and automate complex multi-step processes',
+      'Trigger actions across apps from one platform',
+      'Automated reminders & follow-ups',
+      'Cross-team workflow collaboration',
+    ],
   },
   {
-    id: "deals",
-    title: "Capture every conversation, accelerate every deal",
+    id: 'dashboards',
+    title: 'Your operations at a glance, fully automated',
     bullets: [
-      "Pre-meeting insights in seconds",
-      "AI-powered summaries and follow-ups",
-      "Pipeline boards & deal alerts",
-      "Performance dashboards for coaching",
-    ]
+      'Automated reporting with real-time metrics',
+      'AI-generated insights, anomalies, and summaries',
+      'Custom dashboards for operations, finance, HR',
+      'No more spreadsheets—data syncs automatically',
+    ],
   },
 ]
 
