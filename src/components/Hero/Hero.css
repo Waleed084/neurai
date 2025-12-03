@@ -5,7 +5,7 @@
   text-align: center;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+/* Using site-wide Bricolage Grotesque (declared in App.css). Remove Montserrat import. */
 
 /* Wrapper layering for particles background */
 .hero-wrapper {
@@ -354,7 +354,7 @@
   line-height: 1.45;
   font-weight: 400;
   font-style: italic;
-  font-family: 'Montserrat', -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Bricolage Grotesque', -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   background: linear-gradient(90deg,#fff 0%, #dff) ;
   -webkit-background-clip: text;
   background-clip: text;
